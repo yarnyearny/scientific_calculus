@@ -31,6 +31,7 @@ class L1VoronoiTests(unittest.TestCase):
                     "a": Point(0, 0),
                     "b": Point(2, 0),
                 },
+                obstacles=(Segment(Point(1, 2), Point(1.5, 2)),),
             )
         )
 

@@ -34,5 +34,5 @@ print(diagram.nearest_sites_at(Point(3, 1)))
 テストは標準ライブラリの `unittest` で実行できます。
 
 ```bash
-python -m unittest
+python3 -m unittest discover -s tests
 ```

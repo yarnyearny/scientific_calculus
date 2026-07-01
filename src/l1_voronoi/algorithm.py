@@ -376,20 +376,22 @@ def _divide_cells(
                 Point(lower_left.x, upper_right.y),
                 upper_right,
             )
-            labels = [vertex_labels.get(corner) for corner in corners]
-            if any(label is None for label in labels):
+            candidates = [
+                (corner, label)
+                for corner in corners
+                if (label := vertex_labels.get(corner)) is not None
+            ]
+            if not candidates:
                 continue
 
             regions = []
-            for index, corner in enumerate(corners):
-                label = labels[index]
-                assert label is not None
+            for corner, label in candidates:
                 polygon = _corner_region_polygon(
                     lower_left,
                     upper_right,
                     corner,
                     label.distance,
-                    [(other, other_label.distance) for other, other_label in zip(corners, labels) if other_label],
+                    [(other_corner, other_label.distance) for other_corner, other_label in candidates],
                 )
                 if _polygon_area(polygon) > EPSILON:
                     regions.append(
