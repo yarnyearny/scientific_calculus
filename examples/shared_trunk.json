@@ -1,0 +1,16 @@
+{
+  "faces": [
+    {"id": "g", "centroid": [0, 0]},
+    {"id": "j", "centroid": [1, 0]},
+    {"id": "a", "centroid": [2, 1]},
+    {"id": "b", "centroid": [2, -1]}
+  ],
+  "adjacencies": [["g", "j"], ["j", "a"], ["j", "b"]],
+  "goal": "g",
+  "starts": ["a", "b"],
+  "config": {
+    "random_restarts": 16,
+    "local_iterations": 200,
+    "seed": 0
+  }
+}
